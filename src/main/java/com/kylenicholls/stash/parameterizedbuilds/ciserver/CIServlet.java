@@ -14,10 +14,10 @@ import org.slf4j.LoggerFactory;
 import com.atlassian.bitbucket.auth.AuthenticationContext;
 import com.atlassian.bitbucket.nav.NavBuilder;
 import com.atlassian.bitbucket.project.ProjectService;
-import com.atlassian.soy.renderer.SoyException;
-import com.atlassian.soy.renderer.SoyTemplateRenderer;
 import com.atlassian.webresource.api.assembler.PageBuilderService;
 import com.google.common.collect.ImmutableMap;
+import com.atlassian.soy.renderer.SoyTemplateRenderer;
+import com.atlassian.soy.renderer.SoyException;
 
 @SuppressWarnings("serial")
 public class CIServlet extends HttpServlet {

@@ -27,13 +27,9 @@ import com.atlassian.bitbucket.i18n.I18nService;
 import com.atlassian.bitbucket.pull.PullRequest;
 import com.atlassian.bitbucket.pull.PullRequestService;
 import com.atlassian.bitbucket.repository.Repository;
-import com.atlassian.bitbucket.rest.RestResource;
-import com.atlassian.bitbucket.rest.util.ResourcePatterns;
-import com.atlassian.bitbucket.rest.util.RestUtils;
 import com.atlassian.bitbucket.server.ApplicationPropertiesService;
 import com.atlassian.bitbucket.setting.Settings;
 import com.atlassian.bitbucket.user.ApplicationUser;
-import com.atlassian.plugins.rest.common.security.AnonymousAllowed;
 import com.kylenicholls.stash.parameterizedbuilds.ciserver.Jenkins;
 import com.kylenicholls.stash.parameterizedbuilds.ciserver.JenkinsConnection;
 import com.kylenicholls.stash.parameterizedbuilds.conditions.BuildPermissionsCondition;
@@ -43,9 +39,8 @@ import com.kylenicholls.stash.parameterizedbuilds.item.BitbucketVariables.Builde
 import com.kylenicholls.stash.parameterizedbuilds.item.Job;
 import com.kylenicholls.stash.parameterizedbuilds.item.Job.Trigger;
 import com.kylenicholls.stash.parameterizedbuilds.item.Server;
-import com.sun.jersey.spi.resource.Singleton;
-
-import org.apache.commons.compress.utils.Lists;
+import javax.inject.Singleton;
+import java.util.Collections;
 
 @Path(ResourcePatterns.REPOSITORY_URI)
 @Consumes({ MediaType.APPLICATION_JSON })
@@ -157,7 +152,7 @@ public class BuildResource extends RestResource {
         if (authContext.isAuthenticated()) {
             Settings settings = settingsService.getSettings(repository);
             if (settings == null) {
-                return Response.ok(Lists.newArrayList()).build();
+                return Response.ok(Collections.emptyList()).build();
             }
 
             String projectKey = repository.getProject().getKey();

@@ -8,9 +8,9 @@ import javax.annotation.Nullable;
 
 import com.atlassian.bitbucket.project.ProjectService;
 import com.atlassian.bitbucket.user.ApplicationUser;
-import com.atlassian.sal.api.pluginsettings.PluginSettings;
-import com.atlassian.sal.api.pluginsettings.PluginSettingsFactory;
 import com.google.common.collect.Lists;
+import com.atlassian.sal.api.pluginsettings.PluginSettingsFactory;
+import com.atlassian.sal.api.pluginsettings.PluginSettings;
 import com.kylenicholls.stash.parameterizedbuilds.item.Server;
 import com.kylenicholls.stash.parameterizedbuilds.item.UserToken;
 

@@ -5,6 +5,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 
 import javax.ws.rs.core.MultivaluedMap;
+import org.glassfish.jersey.internal.util.collection.MultivaluedStringMap;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
@@ -36,7 +37,6 @@ import com.kylenicholls.stash.parameterizedbuilds.helper.SettingsService;
 import com.kylenicholls.stash.parameterizedbuilds.item.JenkinsResponse;
 import com.kylenicholls.stash.parameterizedbuilds.item.Job;
 import com.kylenicholls.stash.parameterizedbuilds.item.Server;
-import com.sun.jersey.core.util.MultivaluedMapImpl;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -146,7 +146,7 @@ public class BuildResourceTest {
         JenkinsResponse message = new JenkinsResponse.JenkinsMessage().error(false).build();
         Job job = new Job.JobBuilder(0).jobName("job").build();
         jobs.add(job);
-        MultivaluedMap<String, String> query = new MultivaluedMapImpl();
+        MultivaluedMap<String, String> query = new MultivaluedStringMap();
         query.add("param1", "value1");
         query.add("param2", "value2");
         when(uriInfo.getQueryParameters()).thenReturn(query);
