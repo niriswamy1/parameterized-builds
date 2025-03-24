@@ -39,6 +39,16 @@
                 <enabled>true</enabled>
             </releases>
         </repository>
+        <repository>
+            <id>atlassian-plugins</id>
+            <url>https://mvnrepository.com/artifact/com.atlassian.plugins.rest/atlassian-rest-common</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>
@@ -206,9 +216,23 @@
             <version>1</version>
         </dependency>
         <dependency>
-            <groupId>com.atlassian.plugins</groupId>
+            <groupId>com.atlassian.annotations</groupId>
             <artifactId>atlassian-annotations</artifactId>
-            <version>2.1.0</version>
+            <version>5.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.atlassian.plugins.rest</groupId>
+            <artifactId>atlassian-rest-common</artifactId>
+            <version>8.0.8</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.atlassian.bitbucket.server/bitbucket-rest-api -->
+        <dependency>
+            <groupId>com.atlassian.bitbucket.server</groupId>
+            <artifactId>bitbucket-rest-api</artifactId>
+            <version>8.19.16</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
     <build>
@@ -219,50 +243,31 @@
                     <artifactId>maven-deploy-plugin</artifactId>
                     <version>3.0.0-M1</version> 
                 </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-deploy-plugin</artifactId>
-                    <version>4.0.0-beta-1</version> 
-                </plugin>
             </plugins>
         </pluginManagement>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.4.0</version>
-                <executions>
-                    <execution>
-                        <id>exec-npm-install</id>
-                        <phase>initialize</phase>
-                        <configuration>
-                            <workingDirectory>./parameterized-client</workingDirectory>
-                            <executable>npm</executable>
-                            <arguments>
-                                <argument>install</argument>
-                            </arguments>
-                        </configuration>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>exec-npm-build</id>
-                        <phase>generate-resources</phase>
-                        <configuration>
-                            <workingDirectory>./parameterized-client</workingDirectory>
-                            <executable>npm</executable>
-                            <arguments>
-                                <argument>run</argument>
-                                <argument>prod-build</argument>
-                            </arguments>
-                        </configuration>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>exec-maven-plugin</artifactId>
+    <version>1.4.0</version>
+    <executions>
+        <execution>
+            <id>exec-npm-build</id>
+            <phase>generate-resources</phase>
+            <goals>
+                <goal>exec</goal>
+            </goals>
+            <configuration>
+                <executable>npx</executable>
+                <arguments>
+                    <argument>webpack</argument>
+                    <argument>--config</argument>
+                    <argument>webpack.config.js</argument>
+                </arguments>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
             <plugin>
                 <groupId>com.atlassian.maven.plugins</groupId>
                 <artifactId>bitbucket-maven-plugin</artifactId>

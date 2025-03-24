@@ -40,7 +40,7 @@ import com.kylenicholls.stash.parameterizedbuilds.item.Job;
 import com.kylenicholls.stash.parameterizedbuilds.item.Job.Trigger;
 import com.kylenicholls.stash.parameterizedbuilds.item.Server;
 import javax.inject.Singleton;
-import com.atlassian.annotations.security.AnonymousAllowed;
+import com.atlassian.plugins.rest.common.security.AnonymousAllowed;
 import java.util.Collections;
 
 @Path("/repositories")

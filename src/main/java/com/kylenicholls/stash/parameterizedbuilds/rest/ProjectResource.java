@@ -19,7 +19,7 @@ import javax.ws.rs.core.UriInfo;
 
 import com.atlassian.bitbucket.auth.AuthenticationContext;
 import com.atlassian.bitbucket.i18n.I18nService;
-import com.atlassian.bitbucket.rest.RestResource;
+import com.atlassian.plugins.rest.common.RestResourceUtil;
 import com.atlassian.bitbucket.rest.util.RestUtils;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
