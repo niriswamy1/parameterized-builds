@@ -27,6 +27,7 @@ import com.atlassian.bitbucket.i18n.I18nService;
 import com.atlassian.bitbucket.pull.PullRequest;
 import com.atlassian.bitbucket.pull.PullRequestService;
 import com.atlassian.bitbucket.repository.Repository;
+import com.atlassian.bitbucket.rest.RestResource;
 import com.atlassian.bitbucket.server.ApplicationPropertiesService;
 import com.atlassian.bitbucket.setting.Settings;
 import com.atlassian.bitbucket.user.ApplicationUser;
