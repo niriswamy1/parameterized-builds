@@ -40,11 +40,12 @@ import com.kylenicholls.stash.parameterizedbuilds.item.Job;
 import com.kylenicholls.stash.parameterizedbuilds.item.Job.Trigger;
 import com.kylenicholls.stash.parameterizedbuilds.item.Server;
 import javax.inject.Singleton;
+import com.atlassian.annotations.security.AnonymousAllowed;
 import java.util.Collections;
 
-@Path(ResourcePatterns.REPOSITORY_URI)
+@Path("/repositories")
 @Consumes({ MediaType.APPLICATION_JSON })
-@Produces({ RestUtils.APPLICATION_JSON_UTF8 })
+@Produces({ MediaType.APPLICATION_JSON })
 @Singleton
 @Deprecated
 @AnonymousAllowed
